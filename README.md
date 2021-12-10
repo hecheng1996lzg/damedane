@@ -10,7 +10,7 @@ function isPopWin(playTime){
 ```
 
 ## 方案二
-通过安装chrome插件来自动破解20分钟弹验证码
+通过安装chrome插件来自动破解20分钟弹验证码。  
 从右上角菜单->更多工具->扩展程序可以进入 插件管理页面，也可以直接在地址栏输入 [chrome://extensions](chrome://extensions/) 访问。
 
 ![](http://image.liuxianan.com/201706/20170620_195047_992_5668.png)
