@@ -39,7 +39,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         let course_id = config.getCourseId(course);
         let course_title = config.getCourseTitle(course);
         sendResponse('我收到了你的消息！');
-        chrome.runtime.sendMessage({cmd: 'check_course', course_id, course_title}, function (response) {
+        chrome.runtime.sendMessage({cmd: 'selected_course', course_id, course_title}, function (response) {
           course[0].click();
         });
       }

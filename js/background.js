@@ -2,7 +2,7 @@ let chromeStorage = new ChromeStorage();
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.cmd) {
     switch (request.cmd) {
-      case 'check_course':
+      case 'selected_course':
         chromeStorage.set({
           state: 'selected',
           title: request.course_title,

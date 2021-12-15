@@ -17,14 +17,19 @@ function isPopWin(playTime){
 
 勾选`开发者模式`即可以文件夹的形式直接加载插件，否则只能安装`.crx`格式的文件。Chrome要求插件必须从它的Chrome应用商店安装，其它任何网站下载的都无法直接安装，所以，其实我们可以把`crx`文件解压，然后通过开发者模式直接加载。
 
-### 方案二流程图
-```flow
-st=>start: 用户登陆
-op=>operation: 登陆操作
-cond=>condition: 登陆成功 Yes or No?
-e=>end: 进入后台
-
-st->op->cond
-cond(yes)->e
-cond(no)->op
-```
+### 方案二流程
+1. 手动进入学习中心页
+2. 点击popup窗口开始按钮
+3. popup向content发送启动信号
+4. content向background发送`selected_course`请求
+5. 进入课程详细页
+6. course_detail向background发送`check_state`请求
+7. course_detail向background发送`listening_course`请求
+8. 进入课程播放页
+9. course_play向background发送`check_state`请求
+10. course_play向background发送`start_play`请求
+11. background设置定时器为课程结束时间
+12. background向content发送`end_play`请求
+13. content刷新页面
+14. content向background发送`check_state`请求
+15. 重复第4步
