@@ -11,22 +11,41 @@
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
+        "https://learning.hzrs.hangzhou.gov.cn/*"
       ],
       "js": [
         "js/jquery-3.3.1.min.js",
+        "js/plugins/GetQueryString.js",
         "js/content-script.js"
       ],
       "css": [
         "css/custom.css"
       ],
       "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://learning.hzrs.hangzhou.gov.cn/course/*"
+      ],
+      "js": [
+        "pages/course_detail.js"
+      ],
+      "run_at": "document_start"
     }
   ],
-  "web_accessible_resources": ["js/inject.js","img/*"],
+  "background": {
+    "page": "background.html"
+  },
+  "web_accessible_resources": [
+    "js/inject.js",
+    "img/*"
+  ],
   "browser_action": {
     "default_icon": "img/icon.png",
     "default_title": "这是一个示例Chrome插件",
     "default_popup": "popup.html"
-  }
+  },
+  "permissions": [
+    "storage"
+  ]
 }

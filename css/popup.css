@@ -1,0 +1,18 @@
+.page{
+  width: 480px;
+  height: 300px;
+}
+.wrapper{
+  margin: 30px;
+}
+button{
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+}
+button:hover{
+  color: #fff;
+  background: #333;
+  transition: all .3s ease;
+}
