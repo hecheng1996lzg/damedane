@@ -17,6 +17,7 @@
         "js/jquery-3.3.1.min.js",
         "js/plugins/GetQueryString.js",
         "js/plugins/InjectCustomJs.js",
+        "js/plugins/GetCurrentTabId.js",
         "js/content-script.js"
       ],
       "css": [
@@ -66,7 +67,6 @@
   },
   "web_accessible_resources": [
     "js/inject.js",
-    "pages/inject_course_play.js",
     "img/*"
   ],
   "browser_action": {

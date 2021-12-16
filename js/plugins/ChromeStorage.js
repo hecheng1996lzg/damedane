@@ -1,13 +1,14 @@
 class ChromeStorage {
   constructor() {
     this.courseStorage = {};
+    this.course_list_window_id = null;
     this.init();
   }
 
-  init(){
+  init(fun){
     this.courseStorage = {};
     let temp = this.getTemplate();
-    this.set(temp);
+    this.set(temp,fun);
   }
 
   getTemplate() {
@@ -21,6 +22,7 @@ class ChromeStorage {
       state: 'normal',
       title: false,
       id: false,
+      window_id: false,
       elapsed_time: 0,    // 已学时间
       credit: 0,          // 学分
     }

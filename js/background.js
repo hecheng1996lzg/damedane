@@ -8,8 +8,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
           title: request.course_title,
           id: request.course_id,
           elapsed_time: request.course_elapsed_time,
-          credit: request.course_credit
+          credit: request.course_credit,
+          window_id: request.window_id,
         });
+        chromeStorage.course_list_window_id = request.window_id;
         break;
       case 'check_state':
         let state = chromeStorage.get('state');
@@ -31,16 +33,22 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         chromeStorage.set({
           state: 'played',
         },()=>{
-          console.log('played');
+          console.log('played',chromeStorage.course_list_window_id);
+          chrome.tabs.sendMessage(chromeStorage.course_list_window_id, {cmd:'end_play'});
           sendMessageToContentScript({cmd:'end_play'});
         });
         break;
       case 'restart_course':
-        chromeStorage.init();
-        chromeStorage.set({},()=>{
-          sendMessageToContentScript({cmd:'start'});
+        console.log('restart')
+        chromeStorage.init(()=>{
+          console.log('start')
+          chrome.tabs.sendMessage(chromeStorage.course_list_window_id, {cmd:'start'});
         });
         break;
     }
   }
 });
+window.setTimeout(()=>{
+  console.log('test');
+  sendMessageToContentScript({cmd:'test'});
+},5000);
