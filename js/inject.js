@@ -12,7 +12,7 @@ function countCourseTimeResult(rs){
   }else{
     if(rs.err ==1){ //完成学习时间
       if(rs.examType == 'W'){
-        window.close();
+        window.postMessage({"cmd": 'end_play'}, '*');
       }else if(rs.examType == 'E'){
         var studyE = get_study_cookie('studyE'); // 获取cookie 是否已经弹出过提示框
         if(studyE != 1){ // 没有cookie 说明是第一次 弹出提示框
@@ -57,5 +57,4 @@ function countCourseTimeResult(rs){
       }
     }
   }
-
 }

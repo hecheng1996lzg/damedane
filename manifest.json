@@ -16,10 +16,20 @@
       "js": [
         "js/jquery-3.3.1.min.js",
         "js/plugins/GetQueryString.js",
+        "js/plugins/InjectCustomJs.js",
         "js/content-script.js"
       ],
       "css": [
         "css/custom.css"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://learning.hzrs.hangzhou.gov.cn/my/"
+      ],
+      "js": [
+        "pages/course_list.js"
       ],
       "run_at": "document_start"
     },
@@ -31,6 +41,24 @@
         "pages/course_detail.js"
       ],
       "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://learning.hzrs.hangzhou.gov.cn/study/*"
+      ],
+      "js": [
+        "pages/course_play_frame.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://course.hzrs.hangzhou.gov.cn/zj/*/*/*"
+      ],
+      "js": [
+        "pages/course_play.js"
+      ],
+      "run_at": "document_start"
     }
   ],
   "background": {
@@ -38,6 +66,7 @@
   },
   "web_accessible_resources": [
     "js/inject.js",
+    "pages/inject_course_play.js",
     "img/*"
   ],
   "browser_action": {

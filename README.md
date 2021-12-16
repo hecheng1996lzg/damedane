@@ -9,8 +9,7 @@ function isPopWin(playTime){
 }
 ```
 
-## 方案二
-通过安装chrome插件来自动破解20分钟弹验证码。  
+## 方案二  
 从右上角菜单->更多工具->扩展程序可以进入 插件管理页面，也可以直接在地址栏输入 [chrome://extensions](chrome://extensions/) 访问。
 
 ![](http://image.liuxianan.com/201706/20170620_195047_992_5668.png)
@@ -25,11 +24,10 @@ function isPopWin(playTime){
 5. 进入课程详细页
 6. course_detail向background发送`check_state`请求
 7. course_detail向background发送`listening_course`请求
-8. 进入课程播放页
-9. course_play向background发送`check_state`请求
-10. course_play向background发送`start_play`请求
-11. background设置定时器为课程结束时间
-12. background向content发送`end_play`请求
-13. content刷新页面
-14. content向background发送`check_state`请求
-15. 重复第4步
+8. course_detail向background发送`check_state`请求，最多轮询3次
+9. 进入课程播放页
+11. inject向course_play发送`end_play`请求
+12. course_play向background发送`end_play`请求
+12. background向course_list发送`end_play`请求
+13. course_list刷新页面
+14. 重复第4步
