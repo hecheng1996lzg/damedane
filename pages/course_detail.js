@@ -40,9 +40,9 @@ $(()=>{
             }else{
               window.clearInterval(timer);
             }
-          },1000);
+          },3000);
         }else{
-          alert('error: 课程不匹配');
+          alert('plugin_error: 课程不匹配');
         }
       });
     }

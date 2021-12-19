@@ -3,15 +3,19 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.cmd) {
     switch (request.cmd) {
       case 'selected_course':
-        chromeStorage.set({
+        let obj = {
           state: 'selected',
           title: request.course_title,
           id: request.course_id,
           elapsed_time: request.course_elapsed_time,
           credit: request.course_credit,
           window_id: request.window_id,
-        });
-        chromeStorage.course_list_window_id = request.window_id;
+        };
+        if (request.window_id && request.window_id !== undefined) {
+          obj.window_id = request.window_id;
+          chromeStorage.course_list_window_id = request.window_id;
+        }
+        chromeStorage.set(obj);
         break;
       case 'check_state':
         let state = chromeStorage.get('state');
@@ -30,25 +34,24 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         }
         break;
       case 'end_play':
+        console.log('set_before', chromeStorage, chromeStorage.course_list_window_id);
         chromeStorage.set({
           state: 'played',
-        },()=>{
-          console.log('played',chromeStorage.course_list_window_id);
-          chrome.tabs.sendMessage(chromeStorage.course_list_window_id, {cmd:'end_play'});
-          sendMessageToContentScript({cmd:'end_play'});
+        }, () => {
+          console.log('played', chromeStorage, chromeStorage.course_list_window_id);
+          chrome.tabs.sendMessage(chromeStorage.course_list_window_id, {cmd: 'end_play'});
         });
         break;
       case 'restart_course':
-        console.log('restart')
-        chromeStorage.init(()=>{
-          console.log('start')
-          chrome.tabs.sendMessage(chromeStorage.course_list_window_id, {cmd:'start'});
+        console.log('restart');
+        chromeStorage.init(() => {
+          console.log('start');
+          chrome.tabs.sendMessage(chromeStorage.course_list_window_id, {
+            cmd: 'start',
+            id: chromeStorage.course_list_window_id
+          });
         });
         break;
     }
   }
 });
-window.setTimeout(()=>{
-  console.log('test');
-  sendMessageToContentScript({cmd:'test'});
-},5000);

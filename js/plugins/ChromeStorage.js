@@ -1,5 +1,6 @@
 class ChromeStorage {
   constructor() {
+    console.log('cs_init')
     this.courseStorage = {};
     this.course_list_window_id = null;
     this.init();
