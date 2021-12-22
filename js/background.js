@@ -34,18 +34,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         }
         break;
       case 'end_play':
-        console.log('set_before', chromeStorage, chromeStorage.course_list_window_id);
         chromeStorage.set({
           state: 'played',
         }, () => {
-          console.log('played', chromeStorage, chromeStorage.course_list_window_id);
           chrome.tabs.sendMessage(chromeStorage.course_list_window_id, {cmd: 'end_play'});
         });
         break;
       case 'restart_course':
-        console.log('restart');
         chromeStorage.init(() => {
-          console.log('start');
           chrome.tabs.sendMessage(chromeStorage.course_list_window_id, {
             cmd: 'start',
             id: chromeStorage.course_list_window_id

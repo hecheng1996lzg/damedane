@@ -27,7 +27,7 @@
     },
     {
       "matches": [
-        "https://learning.hzrs.hangzhou.gov.cn/my/"
+        "https://learning.hzrs.hangzhou.gov.cn/my/*"
       ],
       "js": [
         "pages/course_list.js"
