@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "xgx",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "description": "新干线挂课时",
   "icons": {
     "16": "img/icon.png",
