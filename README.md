@@ -8,7 +8,7 @@ function isPopWin(playTime){
 	return false;
 }
 ```
-
+ 
 ## 方案二  
 从右上角菜单->更多工具->扩展程序可以进入 插件管理页面，也可以直接在地址栏输入 [chrome://extensions](chrome://extensions/) 访问。
 
