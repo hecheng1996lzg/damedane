@@ -21,7 +21,7 @@ let config = {
 function course_start(id) {
     let courses = config.getCourses();
     if (courses.length > 0) {
-        let course = courses.first();
+        let course = courses.eq(3); // 从列表第三条开始播放
         let course_id = config.getCourseId(course);
         let course_title = config.getCourseTitle(course);
         let course_elapsed_time = config.getCourseElapsedTime(course);
