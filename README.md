@@ -18,7 +18,7 @@ function isPopWin(playTime){
 
 ### 方案二流程
 1. 手动进入学习中心页
-2. 点击popup窗口开始按钮
+2. 点击popup窗口开始按钮  
 ------后面就不用管了------
 3. popup向content发送启动信号
 4. content向background发送`selected_course`请求
