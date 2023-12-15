@@ -21,13 +21,13 @@ function isPopWin(playTime){
 2. 点击popup窗口开始按钮  
 ------后面就不用管了------
 3. popup向content发送启动信号
-4. content向background发送`selected_course`请求
-    4.1 记录window_id
-    4.2 课程状态修改为selected
+4. content向background发送`selected_course`请求  
+    4.1 记录window_id  
+    4.2 课程状态修改为selected  
 5. 进入课程详细页
 6. course_detail向background发送`check_state`请求
-7. course_detail向background发送`listening_course`请求
-    7.1 课程状态修改为listening
+7. course_detail向background发送`listening_course`请求  
+    7.1 课程状态修改为listening  
 8. course_detail向background发送`check_state`请求，最多轮询3次
 9. 进入课程播放页
 10. inject向course_play_frame发送`end_play`请求
